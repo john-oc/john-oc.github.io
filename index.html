@@ -18,7 +18,9 @@
 </head>
 <body ng-controller="MainCtrl">
 <div class="demo">
-    <h2>Demo - acute-select for AngularJS</h2>
+    <h2>Live Demo - acute-select for AngularJS</h2>
+
+<div class="intro"><b>acute-select</b> is a dropdown select component for AngularJS, with no dependencies other than angular itself.</div>
 
     <a href="https://github.com/john-oc/acute-select">Source code on github</a>
 
@@ -36,20 +38,6 @@
         </tab>
         <tab heading="JavaScript">
             <pre>
-$scope.colours = [
-    { name: 'black', id: 0 },
-    { name: 'white', id: 1 },
-    { name: 'red', id: 2 },
-    { name: 'blue', id: 3 },
-    { name: 'yellow', id: 4 },
-    { name: 'orange', id: 5 },
-    { name: 'purple', id: 6 },
-    { name: 'green', id: 7 },
-    { name: 'brown', id: 8 },
-    { name: 'grey', id: 9 },
-    { name: 'aquamarine', id: 10 }
-];
-
 $scope.selectedColour = $scope.colours[2]; // red.
 
 $scope.colourChanged = function (value) {
@@ -57,7 +45,12 @@ $scope.colourChanged = function (value) {
     $scope.message = "ac-change event fired for colour. New colour: " + colourName;
     $scope.$digest();
 };
-            </pre>
+
+$scope.colours = [
+    { name: 'black', id: 0 },
+    { name: 'white', id: 1 },
+    { name: 'red', id: 2 },
+    ...</pre>
         </tab>
     </tabset>
     <br />

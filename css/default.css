@@ -1,13 +1,24 @@
 ﻿body {
-    padding-left: 16px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
+}
+
+.demo {
+    padding-left: 30px;
 }
 
 .demo p {
     padding-top: 6px;
     padding-left: 6px;
     font-size: 13px;
+}
+
+.intro {
+    width: 500px;
+    font-size: 16px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 6px;
 }
 
 pre {
@@ -39,7 +50,7 @@ pre {
 }
 
 .tab-content {
-    padding: 16px;
+    padding: 16px 10px 16px 10px;
     border-bottom:solid 1px #ddd;
     border-top-color: transparent;*/
 }
