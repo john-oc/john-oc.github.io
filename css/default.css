@@ -1,0 +1,49 @@
+﻿body {
+    padding-left: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+
+.demo p {
+    padding-top: 6px;
+    padding-left: 6px;
+    font-size: 13px;
+}
+
+pre {
+    margin: 0px !important;
+}
+
+.demo a, .demo a:active, .demo a:hover, .demo a:visited {
+    /*color: #666 !important;*/
+    font-weight: normal !important;
+    font-size: 13px;
+}
+
+
+/* For ui-bootstrap */
+.nav, .pagination, .carousel a { cursor: pointer; }
+
+.tabbable {
+    display: table;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.tabbable a.active {
+    background-color: #f8f8f8;
+}
+
+.tab-pane {
+    padding-left: 4px;
+}
+
+.tab-content {
+    padding: 16px;
+    border-bottom:solid 1px #ddd;
+    border-top-color: transparent;*/
+}
+
+.nav {
+    margin-bottom: 0px !important;
+}

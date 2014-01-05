@@ -1,10 +1,98 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html id="ng-app" ng-app="index">
 <head>
-    <title></title>
+    <title>john-oc projects</title>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="lib/angular.min.1.2.7.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.9.0.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="acute.select/acute.select.js"></script>
+    <link href="acute.select/acute.select.css" rel="stylesheet" />
+    <script src="index.js"></script>
+    <!--[if lte IE 8]>
+      <script>
+        document.createElement('tabset');
+        document.createElement('tab');
+      </script>
+    <![endif]-->
 </head>
-<body>
-    <h1>john-oc projects</h1>
-    <h2>acute-select for AngularJS</h2>
+<body ng-controller="MainCtrl">
+<div class="demo">
+    <h2>Demo - acute-select for AngularJS</h2>
+
+    <a href="https://github.com/john-oc/acute-select">Source code on github</a>
+
+    <h4>Basic select with search</h4>
+    <!-- N.B. self-closing select results in spurious mark-up! -->
+    <select class="ac-select" ac-model="selectedColour" ac-options="c.name for c in colours" 
+        ac-change="colourChanged(value)"></select> 
+    <p>Colour selected: {{selectedColour.name}}</p>
+
+    <tabset>
+        <tab heading="Markup">
+            <pre>
+&lt;select class="ac-select" ac-model="selectedColour" ac-options="c.name for c in colours" 
+    ac-change="colourChanged(value)">&lt;/select></pre>
+        </tab>
+        <tab heading="JavaScript">
+            <pre>
+$scope.colours = [
+    { name: 'black', id: 0 },
+    { name: 'white', id: 1 },
+    { name: 'red', id: 2 },
+    { name: 'blue', id: 3 },
+    { name: 'yellow', id: 4 },
+    { name: 'orange', id: 5 },
+    { name: 'purple', id: 6 },
+    { name: 'green', id: 7 },
+    { name: 'brown', id: 8 },
+    { name: 'grey', id: 9 },
+    { name: 'aquamarine', id: 10 }
+];
+
+$scope.selectedColour = $scope.colours[2]; // red.
+
+$scope.colourChanged = function (value) {
+    var colourName = value ? value.name : "none";
+    $scope.message = "ac-change event fired for colour. New colour: " + colourName;
+    $scope.$digest();
+};
+            </pre>
+        </tab>
+    </tabset>
+    <br />
+    <h4>Loading data when the dropdown opens</h4>
+    <select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+        ac-settings="{ loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"></select>
+    <p>State selected: {{stateInfo}}</p>
+
+    <tabset>
+        <tab heading="Markup">
+            <pre>
+&lt;select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+        ac-settings="{ loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"&gt;&lt;/select&gt;</pre>
+           <p>Here, the parentheses on "getAllStates()" tell the ac-select directive to call a function to get the data for the dropdown.<br />
+               Note that the ac-change function must be specified with a parameter called "value".
+           </p>
+        </tab>
+        <tab heading="JavaScript">
+            <pre>
+$scope.getAllStates = function (callback) {
+    callback($scope.allStates);
+};
+
+$scope.stateSelected = function (state) {
+    $scope.stateInfo = state.name + " (" + state.id + ")";
+}
+
+$scope.allStates = [
+    { "name": "Alabama", "id": "AL" },
+    { "name": "Alaska", "id": "AK" },
+    ...</pre>
+            <p>ac-select passes a callback function to accept the data, so it can be read asynchronously if required.</p>
+        </tab>
+    </tabset>
+
+</div>
 </body>
 </html>
