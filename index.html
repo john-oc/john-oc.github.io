@@ -11,6 +11,7 @@
     <script src="index.js"></script>
     <!--[if lte IE 8]>
       <script>
+        document.createElement('ac-select');
         document.createElement('tabset');
         document.createElement('tab');
       </script>
@@ -18,23 +19,27 @@
 </head>
 <body ng-controller="MainCtrl">
 <div class="demo">
+    <br />
     <h2>Live Demo - acute-select for AngularJS</h2>
+    <p>By John O'Connor.</p>
 
-<div class="intro"><b>acute-select</b> is a dropdown select component for AngularJS, with no dependencies other than angular itself.</div>
+<div class="intro"><b>acute-select</b> is a dropdown select component for <a href="http://angularjs.org/">AngularJS</a>, with no dependencies other than Angular itself.
+    &nbsp;It has a range of configuration options and a syntax akin to Angular's standard select directive.
+    
+</div>
+    <p><a href="https://github.com/john-oc/acute-select">Source code on github.</a></p>
 
-    <a href="https://github.com/john-oc/acute-select">Source code on github</a>
-
-    <h4>Basic select with search</h4>
-    <!-- N.B. self-closing select results in spurious mark-up! -->
-    <select class="ac-select" ac-model="selectedColour" ac-options="c.name for c in colours" 
-        ac-change="colourChanged(value)"></select> 
+    <hr />
+    <h4>Basic select with filtering</h4>
+    <ac-select ac-model="selectedColour" ac-options="c.name for c in colours" 
+        ac-change="colourChanged(value)"></ac-select> 
     <p>Colour selected: {{selectedColour.name}}</p>
 
     <tabset>
         <tab heading="Markup">
             <pre>
-&lt;select class="ac-select" ac-model="selectedColour" ac-options="c.name for c in colours" 
-    ac-change="colourChanged(value)">&lt;/select></pre>
+&ltac-select ac-model="selectedColour" ac-options="c.name for c in colours" 
+    ac-change="colourChanged(value)">&lt;/ac-select></pre>
         </tab>
         <tab heading="JavaScript">
             <pre>
@@ -53,7 +58,8 @@ $scope.colours = [
     ...</pre>
         </tab>
     </tabset>
-    <br />
+
+    <hr />
     <h4>Loading data when the dropdown opens</h4>
     <select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
         ac-settings="{ loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"></select>
@@ -62,7 +68,7 @@ $scope.colours = [
     <tabset>
         <tab heading="Markup">
             <pre>
-&lt;select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+&lt;select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in <b>getAllStates()</b>" 
         ac-settings="{ loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"&gt;&lt;/select&gt;</pre>
            <p>Here, the parentheses on "getAllStates()" tell the ac-select directive to call a function to get the data for the dropdown.<br />
                Note that the ac-change function must be specified with a parameter called "value".
@@ -85,6 +91,43 @@ $scope.allStates = [
             <p>ac-select passes a callback function to accept the data, so it can be read asynchronously if required.</p>
         </tab>
     </tabset>
+
+    <hr />
+    <h4>Combo Mode</h4>
+    <p>I.e. a combined text box and dropdown.</p>
+    <select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+        ac-settings="{ comboMode: true, loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"></select>
+    <p>State selected: {{stateInfo}}</p>
+
+    <tabset>
+        <tab heading="Markup">
+            <pre>
+&lt;select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+        ac-settings="{ <b>comboMode: true</b>, loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"&gt;&lt;/select&gt;</pre>
+           <p>Combo mode is enabled by including "comboMode: true" in the ac-settings attribute.</p>
+        </tab>
+        <tab heading="JavaScript">
+            <pre>
+$scope.getAllStates = function (callback) {
+    callback($scope.allStates);
+};
+
+$scope.stateSelected = function (state) {
+    $scope.stateInfo = state.name + " (" + state.id + ")";
+}
+
+$scope.allStates = [
+    { "name": "Alabama", "id": "AL" },
+    { "name": "Alaska", "id": "AK" },
+    ...</pre>
+            <p>ac-select passes a callback function to accept the data, so it can be read asynchronously if required.</p>
+        </tab>
+    </tabset>
+    <hr />
+    <p>See <a href="https://github.com/john-oc/acute-select">github README</a> for a full list of settings.</p>
+
+    <div class="signature">John O'Connor</div>
+    <hr />
 
 </div>
 </body>

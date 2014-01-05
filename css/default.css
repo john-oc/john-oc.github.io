@@ -5,6 +5,7 @@
 
 .demo {
     padding-left: 30px;
+    padding-right: 30px;
 }
 
 .demo p {
@@ -14,19 +15,27 @@
 }
 
 .intro {
-    width: 500px;
-    font-size: 16px;
+    width: 600px;
     padding: 6px;
-    border: 1px solid #ccc;
     margin-bottom: 6px;
+}
+
+.signature {
+    font-size: 110%;
+    padding: 6px;
 }
 
 pre {
     margin: 0px !important;
 }
 
+hr {
+    border-top-color: #ddd !important;
+    margin-top: 10px !important;
+}
+
 .demo a, .demo a:active, .demo a:hover, .demo a:visited {
-    /*color: #666 !important;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal !important;
     font-size: 13px;
 }
@@ -51,8 +60,6 @@ pre {
 
 .tab-content {
     padding: 16px 10px 16px 10px;
-    border-bottom:solid 1px #ddd;
-    border-top-color: transparent;*/
 }
 
 .nav {
